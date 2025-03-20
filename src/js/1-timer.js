@@ -25,13 +25,14 @@ const options = {
       return
     }    
     
-    startButton.removeEventListener('click', startTimer(endDate));
-    startButton.addEventListener('click', startTimer(endDate));
+    startButton.removeEventListener('click', startTimer);
+    startButton.addEventListener('click', () => startTimer(endDate));
   
   }   
 }
-
 flatpickr("#datetime-picker", options);
+
+
 
 function displayTimer(days, hours, minutes, seconds) {
   document.querySelector('[data-days]').textContent = addLeadingZero(days) ;

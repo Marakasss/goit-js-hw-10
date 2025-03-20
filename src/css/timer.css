@@ -18,7 +18,7 @@ body {
     gap: 0.3rem;
     width: 340px;
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 50%;
     transform: translate(-50%, -50%);
     flex-wrap: nowrap;
@@ -104,8 +104,8 @@ body {
     gap: 12px;
     color: #ebedf0;
     position: absolute;
-    left: 49%;
-    bottom: 16%;
+    left: 49vw;
+    bottom: 15vh;
     transform: translate(-50%, -50%);
     font-family: "Tektur", sans-serif;
 
@@ -135,8 +135,8 @@ body {
 
 
 @media screen and (min-width: 768px) {
-    .timer {
-            bottom: 20%;
+    .value {
+            font-size: 42px;
         }
 }
 
@@ -148,13 +148,13 @@ body {
     }
 
     .timer {
-        bottom: 7%;
+        bottom: 8%;
     }
 
-    .value {
-        font-size: 42px;
+    .field:last-child {
+        min-width: 55px;
+        
     }
-
     
 }
 

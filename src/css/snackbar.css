@@ -1,3 +1,8 @@
+html,
+body {
+    overflow: hidden;
+}
+
 body {
     height: 100vh;
     width: 100vw;
@@ -6,7 +11,6 @@ body {
     background-position: center;
     background-size: cover;
     background-image: url(../img/global-communication-background.jpg);
-    overflow-x: hidden;
 }
 
 

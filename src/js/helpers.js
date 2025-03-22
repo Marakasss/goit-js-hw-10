@@ -35,7 +35,7 @@ export function errorMessage(message) {
  iziToast.error({
     
    message: message,
-   position: 'topLeft',
+   position: 'topCenter',
    transitionIn: 'fadeInDown',
    backgroundColor: 'rgb(231, 19, 36)',
    messageColor: 'white',
@@ -48,7 +48,7 @@ export function errorMessage(message) {
 export function sucsessMessage(message) {
  iziToast.success({
    message: message,
-   position: 'topRight',
+   position: 'topCenter',
    transitionIn: 'fadeInDown',
    backgroundColor: '#40c9ff',
    messageColor: 'white',

@@ -1,11 +1,12 @@
 body {
     height: 100vh;
+    width: 100vw;
     margin: 0;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    
     background-image: url(../img/global-communication-background.jpg);
+    overflow-x: hidden;
 }
 
 

@@ -2,7 +2,7 @@ import { errorMessage, sucsessMessage } from './helpers'
 
 const form = document.querySelector('.form');
 
-fieldSetActive()
+fieldSetActiveStyle()
 
 
 const makePromise = (state, delay) => {
@@ -18,9 +18,10 @@ const makePromise = (state, delay) => {
   });
 };
 
+// GENERATE PROMISES
 form.addEventListener('submit', event => {
     event.preventDefault();
-    
+    //takes values from form
     let formData = new FormData(form);
     const state = formData.get('state')
     const delay = formData.get('delay')
@@ -32,8 +33,8 @@ form.addEventListener('submit', event => {
     
 
 
-
-function fieldSetActive() {
+// FIELDSET COLORFULL IF RADIO CHECKED
+function fieldSetActiveStyle() {
 const radioButtons = document.querySelectorAll('.radio-button-input');
 const fieldset = document.querySelector('fieldset');
   
@@ -48,6 +49,7 @@ radioButtons.forEach((radio) => {
 
 }
 
+// INPUT + LABEL COLORFULL IF IT HAS SOME VALUE
 function inputActiveStyle(event) {
   const input = document.querySelector('input')
   const label = document.querySelector('.input-label')

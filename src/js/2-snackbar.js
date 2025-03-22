@@ -1,11 +1,11 @@
 import { errorMessage, sucsessMessage } from './helpers'
 
 const form = document.querySelector('.form');
-
 fieldSetActiveStyle()
 
 
 const makePromise = (state, delay) => {
+
   return new Promise((resolve, reject) => {
 	   setTimeout(() => {
 				if(state === 'fulfilled') {
@@ -20,6 +20,7 @@ const makePromise = (state, delay) => {
 
 // GENERATE PROMISES
 form.addEventListener('submit', event => {
+
     event.preventDefault();
     //takes values from form
     let formData = new FormData(form);
@@ -30,11 +31,13 @@ form.addEventListener('submit', event => {
         .then(value => sucsessMessage(`✅ Fulfilled promise in ${delay}ms`))
         .catch(error => errorMessage(`❌ Rejected promise in ${delay}ms`))
 })  
+
     
 
 
 // FIELDSET COLORFULL IF RADIO CHECKED
 function fieldSetActiveStyle() {
+
 const radioButtons = document.querySelectorAll('.radio-button-input');
 const fieldset = document.querySelector('fieldset');
   
@@ -46,7 +49,7 @@ radioButtons.forEach((radio) => {
     }
   });
 });
-
+  
 }
 
 // INPUT + LABEL COLORFULL IF IT HAS SOME VALUE

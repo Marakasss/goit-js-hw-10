@@ -29,7 +29,7 @@ export function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-// ------------------ERROR MESSAGE FOR TIMER--------------------------
+// ------------------ MESSAGE--------------------------
 
 export function errorMessage(message) {
  iziToast.error({
@@ -42,6 +42,19 @@ export function errorMessage(message) {
    iconColor: 'white',
    messageSize: '16px',
    class: 'toast',
+});
+}
+
+export function sucsessMessage(message) {
+ iziToast.success({
+   message: message,
+   position: 'topRight',
+   transitionIn: 'fadeInDown',
+   backgroundColor: '#40c9ff',
+   messageColor: 'white',
+   iconColor: 'white',
+   messageSize: '16px',
+   
 });
 }
 

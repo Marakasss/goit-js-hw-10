@@ -5,12 +5,11 @@ body {
 
 body {
     height: 100vh;
-   
     margin: 0;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-image: url(../img/global-communication-background.jpg);
+    background-image: url(../img/photo-stone-texture-pattern.jpg);
 }
 
 

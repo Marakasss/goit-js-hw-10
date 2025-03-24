@@ -62,12 +62,14 @@ export function sucsessMessage(message) {
 // --------------ADDING AND REMOVE DISABLE STYLES FOR BTN----------------
 
 
-export function buttonDisabledToggle(element, color) {
-  if (element.disabled) {
-    element.style.pointerEvents = "none";
-    element.style.background = color;
-  } else {
-    element.style.removeProperty("pointer-events");
-    element.style.removeProperty("background");
-  }
+
+
+export function disable(element, className) {
+  element.disabled = true;
+  element.classList.add(`${className}`);
+}
+
+export function enable(element, className) {
+  element.disabled = false;
+  element.classList.remove(className)
 }

@@ -29,7 +29,7 @@ body {
 .input-container input {
     border-radius: 0.8rem 0 0 0.8rem;
     background: transparent;
-    box-shadow: inset 5px 5px 10px #0e1013, inset -5px -5px 10px #383e4b, 0px 0px 100px rgba(255, 212, 59, 0), 0px 0px 100px rgba(255, 102, 0, 0);
+    box-shadow: inset 5px 5px 5px #0e1013, inset -1px -1px 2px #25282f, 0px 0px 100px rgba(255, 212, 59, 0), 0px 0px 100px rgba(255, 102, 0, 0);
     width: 100%;
     flex-basis: 75%;
     padding: 10px 10px 10px 42px;
@@ -164,3 +164,12 @@ body {
     
 }
 
+.disable-btn {
+    background: #7a3136 !important;
+    pointer-events: none;
+}
+
+.disable-input {
+    background-color: #1f1313 !important;
+        pointer-events: none;
+}

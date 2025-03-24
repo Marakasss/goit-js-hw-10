@@ -1,14 +1,16 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import "flatpickr/dist/themes/dark.css";
-import { convertMs, addLeadingZero, errorMessage, buttonDisabledToggle } from './helpers'
+import { convertMs, addLeadingZero, errorMessage, enable, disable } from './helpers'
 
 // GLOBAL
 let timerID = null;
-const startButton = document.querySelector(".button");
+const startButton = document.querySelector('.button');
+const dateTimePicker = document.querySelector('#datetime-picker')
 
 // add disable btn styles
-buttonDisabledToggle(startButton,'#7a3136')
+disable(startButton, 'disable-btn')
+
 
 // FLATPICR LIBRARY IMPLEMENT
 const options = {
@@ -18,58 +20,61 @@ const options = {
   minuteIncrement: 1,
   // CLOSING BEHAVIOR LOGIC FOR ONCLOSE METHOD
   onClose(selectedDates) {
+      const endDate = new Date(selectedDates[0].getTime());
+      const now = new Date().getTime();
     
-    const endDate = new Date(selectedDates[0].getTime());
-    const now = new Date().getTime();
-    
-    if (endDate - now < 0) {
+      if (endDate - now < 0) {
       errorMessage("Please choose a date in the future");
       return;
-    }
-    //make btn active
-    startButton.removeAttribute('disabled')
-    buttonDisabledToggle(startButton,'#7a3136')
-    // remove prev interval, add new and start timer
-    startButton.removeEventListener('click', startTimer);
-    startButton.addEventListener('click', () => {
-      startTimer(endDate);
-      // make btn disabled
-      startButton.setAttribute('disabled', 'true')
-      buttonDisabledToggle(startButton,'#7a3136') 
-    });
-  
+      }
+
+      //make btn active
+      enable(startButton, 'disable-btn')
+
+      // remove prev interval, add new and start timer
+      startButton.removeEventListener('click', startTimer);
+      startButton.addEventListener('click', () => {
+        startTimer(endDate);
+        // make btn disabled
+        disable(startButton, 'disable-btn');
+        disable(dateTimePicker, 'disable-input')
+      });
   }   
 }
-flatpickr("#datetime-picker", options);
 
+try {
+  flatpickr("#datetime-picker", options);
+} catch (err) {
+  console.error("Flatpickr initialization failed:", err);
+  errorMessage("Something went wrong. Try again.");
+}
 
 //START TIMER LOGIC
 function startTimer(endDate) {
       // if prev timer exist
-      if (timerID) clearInterval(timerID);
+  if (timerID) clearInterval(timerID);
+  
       // start timer
       timerID = setInterval(() => {
-      let now = new Date().getTime();
+      let now = Date.now();
       const timeLeft = endDate - now;
+      // convert time to d.h.m.s and adding to html 
+      let  timeUnits  = convertMs(endDate - now);
+      displayTimer(timeUnits);  
+
       // if time on timer ends
       if (timeLeft <= 0) {
         clearInterval(timerID);
-        displayTimer(0, 0, 0, 0);
+        displayTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        enable(dateTimePicker, 'disable-input');
         return;
-        }
-      // convert time to d.h.m.s and adding to html 
-      let { days, hours, minutes, seconds } = convertMs(endDate - now);
-      displayTimer(days, hours, minutes, seconds);
-        
+        } 
       }, 1000)
     }
 
 //ADDING TIME TO HTML
-function displayTimer(days, hours, minutes, seconds) {
-  document.querySelector('[data-days]').textContent = addLeadingZero(days) ;
-  document.querySelector('[data-hours]').textContent = addLeadingZero(hours);
-  document.querySelector('[data-minutes]').textContent = addLeadingZero(minutes);
-  document.querySelector('[data-seconds]').textContent = addLeadingZero(seconds);
+function displayTimer(timeUnits) {
+   Object.keys(timeUnits).forEach(key => {
+    document.querySelector(`[data-${key}]`).textContent = addLeadingZero(timeUnits[key]) ;
+  });
 }
-
-

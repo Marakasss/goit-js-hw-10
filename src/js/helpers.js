@@ -62,8 +62,6 @@ export function sucsessMessage(message) {
 // --------------ADDING AND REMOVE DISABLE STYLES FOR BTN----------------
 
 
-
-
 export function disable(element, className) {
   element.disabled = true;
   element.classList.add(`${className}`);

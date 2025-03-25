@@ -1,8 +1,6 @@
 import { errorMessage, sucsessMessage } from './helpers'
 
 const form = document.querySelector('.form');
-fieldSetActiveStyle()
-
 
 const makePromise = (state, delay) => {
 
@@ -20,7 +18,6 @@ const makePromise = (state, delay) => {
 
 // GENERATE PROMISES
 form.addEventListener('submit', event => {
-
     event.preventDefault();
     //takes values from form
     let formData = new FormData(form);
@@ -32,25 +29,23 @@ form.addEventListener('submit', event => {
         .catch(error => errorMessage(`❌ Rejected promise in ${delay}ms`))
 })  
 
-    
 
 
 // FIELDSET COLORFULL IF RADIO CHECKED
 function fieldSetActiveStyle() {
-
-const radioButtons = document.querySelectorAll('.radio-button-input');
-const fieldset = document.querySelector('fieldset');
+  const radioButtons = document.querySelectorAll('.radio-button-input');
+  const fieldset = document.querySelector('fieldset');
   
-radioButtons.forEach((radio) => {
-  radio.addEventListener('change', () => {
-    if (radio.checked) {
-      fieldset.style.color = '#40c9ff';
-      fieldset.style.borderColor = '#40c9ff';
-    }
+  radioButtons.forEach((radio) => {
+    radio.addEventListener('change', () => {
+      if (radio.checked) {
+        fieldset.style.color = '#40c9ff';
+        fieldset.style.borderColor = '#40c9ff';
+      }
+    });
   });
-});
-  
 }
+fieldSetActiveStyle()
 
 // INPUT + LABEL COLORFULL IF IT HAS SOME VALUE
 function inputActiveStyle(event) {
@@ -60,7 +55,6 @@ function inputActiveStyle(event) {
   {
     input.style.borderColor = '#40c9ff';
     label.style.color = '#40c9ff';
-    
   }
 }
 form.addEventListener('input', inputActiveStyle)

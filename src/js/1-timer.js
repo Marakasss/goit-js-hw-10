@@ -7,7 +7,6 @@ import { convertMs, addLeadingZero, errorMessage, enable, disable } from './help
 let timerID = null;
 const startButton = document.querySelector('.button');
 const dateTimePicker = document.querySelector('#datetime-picker')
-
 // add disable btn styles
 disable(startButton, 'disable-btn')
 
@@ -20,26 +19,25 @@ const options = {
   minuteIncrement: 1,
   // CLOSING BEHAVIOR LOGIC FOR ONCLOSE METHOD
   onClose(selectedDates) {
-      const endDate = new Date(selectedDates[0].getTime());
-      const now = new Date().getTime();
+        const endDate = new Date(selectedDates[0].getTime());
+        const now = new Date().getTime();
     
-      if (endDate - now < 0) {
-      errorMessage("Please choose a date in the future");
-      return;
-      }
-
-      //make btn active
-      enable(startButton, 'disable-btn')
-
-      // remove prev interval, add new and start timer
-      startButton.removeEventListener('click', startTimer);
-      startButton.addEventListener('click', () => {
+        if (endDate - now < 0) {
+        errorMessage("Please choose a date in the future");
+        return;
+        }
+    
+        //make btn active
+        enable(startButton, 'disable-btn')
+        // remove prev interval, add new and start timer
+        startButton.removeEventListener('click', startTimer);
+        startButton.addEventListener('click', () => {
         startTimer(endDate);
-        // make btn disabled
+        // make btn & input disabled
         disable(startButton, 'disable-btn');
         disable(dateTimePicker, 'disable-input')
       });
-  }   
+    }   
 }
 
 try {
@@ -52,11 +50,11 @@ try {
 //START TIMER LOGIC
 function startTimer(endDate) {
       // if prev timer exist
-  if (timerID) clearInterval(timerID);
+      if (timerID) clearInterval(timerID);
   
       // start timer
       timerID = setInterval(() => {
-      let now = Date.now();
+      const now = Date.now();
       const timeLeft = endDate - now;
       // convert time to d.h.m.s and adding to html 
       let  timeUnits  = convertMs(endDate - now);
@@ -74,7 +72,7 @@ function startTimer(endDate) {
 
 //ADDING TIME TO HTML
 function displayTimer(timeUnits) {
-   Object.keys(timeUnits).forEach(key => {
-    document.querySelector(`[data-${key}]`).textContent = addLeadingZero(timeUnits[key]) ;
+    Object.keys(timeUnits).forEach(key => {
+    document.querySelector(`[data-${key}]`).textContent = addLeadingZero(timeUnits[key]);
   });
 }

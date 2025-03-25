@@ -140,6 +140,15 @@ body {
     display: none;
 }
 
+.disable-btn {
+    background: #7a3136 !important;
+    pointer-events: none;
+}
+
+.disable-input {
+    background-color: #1f1313 !important;
+    pointer-events: none;
+}
 
 @media screen and (min-width: 768px) {
     .value {
@@ -164,12 +173,3 @@ body {
     
 }
 
-.disable-btn {
-    background: #7a3136 !important;
-    pointer-events: none;
-}
-
-.disable-input {
-    background-color: #1f1313 !important;
-        pointer-events: none;
-}

@@ -3,7 +3,6 @@ import { errorMessage, sucsessMessage } from './helpers'
 const form = document.querySelector('.form');
 
 const makePromise = (state, delay) => {
-
   return new Promise((resolve, reject) => {
 	   setTimeout(() => {
        state === 'fulfilled' ? resolve(delay) : reject(delay)
@@ -24,7 +23,7 @@ form.addEventListener('submit', event => {
         .catch(error => errorMessage(`❌ Rejected promise in ${delay}ms`))
 })  
 
-
+// --------------------------UI STYLES---------------------------------------
 
 // FIELDSET COLORFULL IF RADIO CHECKED
 function fieldSetActiveStyle() {

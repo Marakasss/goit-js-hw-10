@@ -6,12 +6,7 @@ const makePromise = (state, delay) => {
 
   return new Promise((resolve, reject) => {
 	   setTimeout(() => {
-				if(state === 'fulfilled') {
-					resolve(delay)
-                }
-                if (state === 'rejected') {
-					reject(delay)
-				}
+       state === 'fulfilled' ? resolve(delay) : reject(delay)
 			}, delay);
   });
 };
